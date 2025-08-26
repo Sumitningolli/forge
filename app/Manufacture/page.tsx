@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
-import { motion, useScroll, useTransform } from "framer-motion";
+// removed framer-motion animations
 
 const PopularDetails = () => {
   const products = [
@@ -53,25 +53,12 @@ const PopularDetails = () => {
     },
   ];
 
-  const { scrollYProgress } = useScroll();
-
-  // animation for fading between product sets
-  const firstOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 1]);
-  const secondOpacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
+  // animations removed
 
   return (
-    <motion.section
+    <section
       id="manufacture"
       className=" relative h-[200vh] bg-white"
-      initial={{ opacity: 0.5 }}
-      whileInView={{
-        opacity: 1,
-        scale: 0.95,
-        transition: {
-          duration: 1,
-        },
-      }}
-      viewport={{ margin: "-200px" }}
     >
       {/* Heading */}
       <div className="sticky top-0 py-12 bg-white z-20 text-center">
@@ -89,8 +76,7 @@ const PopularDetails = () => {
       </div>
 
       {/* First Product Set */}
-      <motion.div
-        style={{ opacity: firstOpacity }}
+      <div
         className="sticky top-45 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 pt-10"
       >
         {products.map((item, index) => (
@@ -125,11 +111,10 @@ const PopularDetails = () => {
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Second Product Set */}
-      <motion.div
-        style={{ opacity: secondOpacity }}
+      <div
         className="sticky top-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 pt-35"
       >
         {products2.map((item, index) => (
@@ -176,8 +161,8 @@ const PopularDetails = () => {
             )}
           </div>
         ))}
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 
