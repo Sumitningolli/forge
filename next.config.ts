@@ -6,11 +6,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Only apply export settings when building for production
+// Build as a static export in production (no basePath/assetPrefix)
 if (process.env.NODE_ENV === 'production') {
   nextConfig.output = "export";
-  nextConfig.basePath = "/forge";
-  nextConfig.assetPrefix = "/forge/";
 }
 
 export default nextConfig;
