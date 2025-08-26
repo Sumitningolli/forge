@@ -2,9 +2,9 @@
 import React from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Model } from "../Model/page";
+import { Model } from "../Model/ModelClient";
 import * as THREE from "three";
-// @ts-ignore
+// @ts-expect-error
 import { EXRLoader } from "three/examples/jsm/loaders/EXRLoader";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { GiFlowerStar } from "react-icons/gi";
