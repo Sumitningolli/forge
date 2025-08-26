@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect } from 'react';
 import type { JSX } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
@@ -152,3 +154,5 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 }
 
 useGLTF.preload('/3d-model.glb');
+
+export default Model;

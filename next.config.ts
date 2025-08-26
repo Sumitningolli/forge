@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Only apply export settings when building for production
-  ...(process.env.NODE_ENV === 'production' && {
-    output: "export",
-    basePath: "/forge",
-    assetPrefix: "/forge/",
-  }),
   images: {
     unoptimized: true,
   },
 };
+
+// Only apply export settings when building for production
+if (process.env.NODE_ENV === 'production') {
+  nextConfig.output = "export";
+  nextConfig.basePath = "/forge";
+  nextConfig.assetPrefix = "/forge/";
+}
 
 export default nextConfig;
