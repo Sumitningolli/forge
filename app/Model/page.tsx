@@ -1,8 +1,11 @@
-import dynamic from 'next/dynamic';
 import React from 'react';
-
-const ModelClient = dynamic(() => import('./ModelClient'), { ssr: false });
+import ModelWrapper from './ModelWrapper';
 
 export default function Page() {
-  return <ModelClient />;
+  return (
+    <div>
+      <h1>3D Model Viewer</h1>
+      <ModelWrapper />
+    </div>
+  );
 }
