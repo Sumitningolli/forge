@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // Required for GitHub Pages
+  // Only apply export settings when building for production
+  ...(process.env.NODE_ENV === 'production' && {
+    output: "export",
+    basePath: "/forge",
+    assetPrefix: "/forge/",
+  }),
   images: {
-    unoptimized: true, // Disable Next.js image optimization (not supported on GitHub Pages)
+    unoptimized: true,
   },
-  basePath: "/forge", // Repo name
-  assetPrefix: "/forge/", // Repo name
 };
 
 export default nextConfig;
