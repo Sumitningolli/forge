@@ -16,6 +16,11 @@ export function Model(props: JSX.IntrinsicElements['group']) {
     }
   }, [actions]);
 
+  // Preload the GLB only on the client to avoid prerender errors
+  useEffect(() => {
+    useGLTF.preload('/3d-model.glb');
+  }, []);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -152,7 +157,5 @@ export function Model(props: JSX.IntrinsicElements['group']) {
     </group>
   );
 }
-
-useGLTF.preload('/3d-model.glb');
 
 export default Model;
