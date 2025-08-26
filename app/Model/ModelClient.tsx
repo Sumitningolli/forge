@@ -1,31 +1,20 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import type { JSX } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { useGLTF, useAnimations } from '@react-three/drei';
-import { Object3D } from 'three';
+import { useGLTF } from '@react-three/drei';
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const group = useRef<Object3D>(null);
-  const { nodes, materials, animations } = useGLTF('/3d-model.glb') as any;
-  const { actions } = useAnimations(animations, group);
-
-  useEffect(() => {
-    if (actions && (actions as any).YourAnimationName) {
-      (actions as any).YourAnimationName.play();
-    }
-  }, [actions]);
+  const gltf = useGLTF('/3d-model.glb') as any;
 
   useEffect(() => {
     useGLTF.preload('/3d-model.glb');
   }, []);
 
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        {/* Geometry content preserved from original file */}
-      </group>
+    <group {...props} dispose={null}>
+      {gltf?.scene ? <primitive object={gltf.scene} /> : null}
     </group>
   );
 }
